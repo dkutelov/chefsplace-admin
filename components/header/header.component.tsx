@@ -10,7 +10,7 @@ import {
 
 export const Header = () => {
   const router = useRouter();
-  console.log(router.pathname);
+  // console.log(router.pathname);
   return (
     <HeaderMain>
       <nav className="container">

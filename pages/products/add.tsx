@@ -1,13 +1,17 @@
 import React from "react";
+import { useQuery } from "react-query";
+
 import { ProductForm } from "../../components/product-form/product-form.component";
-import ImageUpload from "../../components/product-image/image-upload";
 
 function AddProduct() {
+  const { isLoading, isError, isSuccess, data } = useQuery("categories", () =>
+    fetch("http://localhost:8000/api/v1/categories").then((res) => res.json())
+  );
+
   return (
     <div className="container">
       <h2 className="page-title">Добави нов продукт</h2>
-      <ProductForm />
-      <ImageUpload />
+      <ProductForm categories={data} />
     </div>
   );
 }
