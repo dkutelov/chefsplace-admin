@@ -9,7 +9,7 @@ function getFileExtension(filename) {
   return filename.slice(filename.lastIndexOf(("." - 1) >>> 0) + 2);
 }
 
-export default function ImageUpload({ setEditMode }) {
+export default function ImageUpload({ setProductPhotoUrls }) {
   const [files, setFiles] = useState([]);
   const [cropper, setCropper] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -34,6 +34,10 @@ export default function ImageUpload({ setEditMode }) {
       //handleImageUrl(file.eager[0].secure_url);
       const imageUrl = file.public_id.substring(20) + "." + file.format;
       console.log(imageUrl);
+      setProductPhotoUrls((prev) => {
+        return [...prev, imageUrl];
+      });
+      setFiles([]);
       setLoading(false);
     });
   }
@@ -46,12 +50,11 @@ export default function ImageUpload({ setEditMode }) {
   return (
     <div>
       <div>
-        <h1>Add Photo</h1>
         <PhotoWidgetDropzone setFiles={setFiles} />
       </div>
 
       <div>
-        <p>Resize</p>
+        <p>2. Преоразмеряване (по възможност квадрат)</p>
         {files.length > 0 && (
           <PhotoWidgetCropper
             setCropper={setCropper}
@@ -60,7 +63,7 @@ export default function ImageUpload({ setEditMode }) {
         )}
       </div>
       <div>
-        <p>Preview and upload</p>
+        <p>3. Преглед и запазване на изображението</p>
         {files.length > 0 && (
           <>
             <div
@@ -68,13 +71,7 @@ export default function ImageUpload({ setEditMode }) {
               style={{ minHeight: 200, minWidth: 200, overflow: "hidden" }}
             />
             <div>
-              <button
-                loading={loading}
-                onClick={handleUploadImage}
-                style={{ width: 100 }}
-                positive
-                icon="check"
-              >
+              <button onClick={handleUploadImage} style={{ width: 100 }}>
                 OK
               </button>
               <button

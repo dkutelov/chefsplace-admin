@@ -9,9 +9,10 @@ export default function PhotoWidgetCropper({ setCropper, imagePreview }) {
     <Cropper
       ref={cropperRef}
       src={imagePreview}
-      style={{ height: 200, width: "100%" }}
-      // Cropper.js options
+      style={{ height: 300, width: "100%" }}
       aspectRatio={1}
+      minAspectRatio={0.5}
+      maxAspectRatio={1.5}
       preview=".img-preview"
       guides={false}
       viewMode={1}

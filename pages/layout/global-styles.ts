@@ -5,9 +5,9 @@ export const GlobalStyle = createGlobalStyle`
 :root {  
   --color-primary-text: #333333;
   --color-accent-dark: #fc3c17;
+  --color-primary: #4b9301;
 
   --color-secondary: #121258;
-  --color-primary: #7ae2f0;
   --color-accent-light: #fc5130;
 }
 

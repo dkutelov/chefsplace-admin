@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const FormGroup = styled.div`
-  width: 100%;
   margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
 
   label {
     display: block;
@@ -12,7 +13,21 @@ export const FormGroup = styled.div`
   input,
   textarea,
   select {
-    width: 100%;
+    padding: 0.5em;
+  }
+`;
+
+export const TableCell = styled.div`
+  margin-bottom: 0.5em;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+
+  input {
     padding: 0.5em;
   }
 `;
@@ -35,4 +50,13 @@ export const FormRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const SaveButton = styled.button`
+  cursor: pointer;
+  padding: 1em;
+  color: white;
+  background-color: var(--color-primary);
+  font-size: 18px;
+  margin-bottom: 2em;
 `;

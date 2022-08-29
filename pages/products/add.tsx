@@ -5,9 +5,10 @@ import { ProductForm } from "../../components/product-form/product-form.componen
 
 function AddProduct() {
   const { isLoading, isError, isSuccess, data } = useQuery("categories", () =>
-    fetch("http://localhost:8000/api/v1/categories").then((res) => res.json())
+    fetch("https://dry-chamber-19090.herokuapp.com/api/v1/categories").then(
+      (res) => res.json()
+    )
   );
-
   return (
     <div className="container">
       <h2 className="page-title">Добави нов продукт</h2>
